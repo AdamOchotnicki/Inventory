@@ -8,7 +8,7 @@ import {Product} from '../product';
     <div class="app-inventory">
       <app-product-list
         [productList]="products"
-        (onProductsSelected)="prductWasSelected($event)">
+        (onProductSelected)="productWasSelected($event)">
       </app-product-list>
     </div>
   `,

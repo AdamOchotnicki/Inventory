@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import {Product} from '../product';
 import {EventEmitter} from '@angular/core';
 
@@ -24,17 +24,20 @@ export class ProductListComponent implements OnInit {
   /**
    * @input productList - the Product[] passed to this component
    */
-  productList:Product[]
+  @Input() productList:Product[]
 
   /**
    * @output onProductSelected - outputs the current Product whenever a new product is selected
    */
-  onProductSelected:EventEmitter<Product>
+  @Output() onProductSelected:EventEmitter<Product>
 
   private currentProduct:Product;
-  constructor() { }
+  constructor() { 
+    this.onProductSelected = new EventEmitter();
+  }
 
   clicked(product:Product):void {
+    console.log("PLC: product = "+JSON.stringify(product))
     this.currentProduct = product;
     this.onProductSelected.emit(product);
   }
