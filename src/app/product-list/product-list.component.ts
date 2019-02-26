@@ -1,22 +1,11 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import {Product} from '../product';
-import {EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
   inputs: ['productList'],
   outputs: ['onProductSelected'],
-  template:
-  `
-    <div class="ui items">
-    <app-product-row
-      *ngFor="let myProduct of productList"
-      [product]="myProduct"
-      (click)='clicked(myProduct)'
-      [class.selected]="isSelected(myProduct)">
-    </app-product-row>
-    </div>
-  `,
+  templateUrl:'./product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
@@ -53,3 +42,4 @@ export class ProductListComponent implements OnInit {
   }
 
 }
+  
